@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Control
 {
@@ -48,5 +49,25 @@ class Control
 
     public Control(int CodigoPrestamo, string NombreEstudiante, int Carnet, string Carrera, string EquipoPrestado, int Cantidad, bool EstadoPrestamo)
     { 
+        this.CodigoPrestamo = CodigoPrestamo;
+        this.NombreEstudiante = NombreEstudiante;
+        this.Carnet = Carnet;
+        this.Carrera = Carrera;
+        this.EquipoPrestado = EquipoPrestado;
+        this.Cantidad = Cantidad;
+        this.EstadoPrestamo = EstadoPrestamo;
+    }
+
+    public string ExtraerDatos()
+    {
+        return "Código del préstamo: " + codigoPrestamo + Environment.NewLine + "Nombre del estudiante: " + nombreEstudiante + Environment.NewLine +
+               "Carnet: " + carnet + Environment.NewLine + "Carrera: " + carrera + Environment.NewLine + 
+               "Equipo prestado: " + equipoPrestado + Environment.NewLine + "Cantidad: " + cantidad + Environment.NewLine +
+               "Estado del préstamo: " + estadoPrestamo + Environment.NewLine + "---------------------------------" + Environment.NewLine;
+    }
+
+    public void GuardarDatos(string ruta)
+    {
+        File.AppendAllText(ruta, ExtraerDatos());
     }
 }
