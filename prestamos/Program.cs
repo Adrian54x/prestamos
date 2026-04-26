@@ -1,5 +1,16 @@
 ﻿using System.Runtime.InteropServices;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+bool menu = true, validarOpcion;
+do
+{
+    Console.WriteLine("---Control de prestamos---");
+    Console.WriteLine("1. Registrar préstamos");
+    Console.WriteLine("2. Buscar préstamos");
+    Console.WriteLine("3. Mostrar información");
+    Console.WriteLine("4. Eliminar registros");
+    Console.Write("Elija una opcion:");
+    validarOpcion = int.TryParse(Console.ReadLine(), out int opcion);
+} while(menu);
 
 class Control
 {
@@ -19,32 +30,63 @@ class Control
     public string NombreEstudiante
     {
         get { return nombreEstudiante; }
-        set { nombreEstudiante = value; }
+        set 
+        {
+            if (value.ToString().Length >= 3)
+            {
+                nombreEstudiante = value;
+            }
+        }
     }
     public int Carnet
     {
         get { return carnet; }
-        set { carnet = value; }
+        set 
+        {
+            if (value.ToString().Length == 5)
+            {
+                carnet = value;
+            }
+        }
     }
     public string Carrera
     {
         get { return carrera; }
-        set { carrera = value; }
+        set 
+        {
+            if (value.Length > 5)
+            {
+                carrera = value;
+            }
+        }
     }
     public string EquipoPrestado
     {
         get { return equipoPrestado; }
-        set { equipoPrestado = value; }
+        set 
+        {
+            if (value.Length > 3)
+            {
+                equipoPrestado = value;
+            }
+        }
     }
     public int Cantidad
     {
         get { return cantidad; }
-        set { cantidad = value; }
+        set 
+        {
+            if (value > 0)
+            {
+                cantidad = value;
+            }
+        }
     }
     public bool EstadoPrestamo
         {
         get { return estadoPrestamo; }
-        set { estadoPrestamo = value; }
+        set 
+        { estadoPrestamo = value; }
     }
 
     public Control(int CodigoPrestamo, string NombreEstudiante, int Carnet, string Carrera, string EquipoPrestado, int Cantidad, bool EstadoPrestamo)
