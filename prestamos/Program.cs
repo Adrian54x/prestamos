@@ -3,14 +3,70 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 bool menu = true, validarOpcion;
 do
 {
+    int opcion = Menu();
+        Console.Clear();
+        switch (opcion)
+        {
+            case 0:
+                Console.WriteLine("Saliendo");
+                Thread.Sleep(300);
+                Console.Write(".");
+                Thread.Sleep(300);
+                Console.Write(".");
+                Thread.Sleep(300);
+                Console.Write(".");
+                menu = false;
+                break;
+            case 1:
+                break;
+            case 2: 
+            case 3: 
+            case 4:
+            default:
+                Console.WriteLine("Opcion no existente");
+                Thread.Sleep(1000);
+                break;
+        }
+} while(menu);
+
+int CodigoPrestamo()
+{
+    do
+    {
+    } while ();
+    return;
+}
+string NombreEstudiante;
+int Carnet;
+string Carrera;
+string EquipoPrestado;
+int Cantidad;
+bool EstadoPrestamo;
+
+int Menu()
+{
+    Console.Clear();
     Console.WriteLine("---Control de prestamos---");
     Console.WriteLine("1. Registrar préstamos");
     Console.WriteLine("2. Buscar préstamos");
     Console.WriteLine("3. Mostrar información");
     Console.WriteLine("4. Eliminar registros");
+    Console.WriteLine("0. Salir");
     Console.Write("Elija una opcion:");
-    validarOpcion = int.TryParse(Console.ReadLine(), out int opcion);
-} while(menu);
+    validarOpcion = int.TryParse(Console.ReadLine(), out int opcion01);
+    if (!validarOpcion)
+    {
+        Console.WriteLine("Caracter no valido");
+        Thread.Sleep(500);
+        Console.Write("-----> Intente otra ves;");
+        Thread.Sleep(300);
+        return 5;
+    }
+    else
+    {
+        return opcion01;
+    }
+}
 
 class Control
 {
