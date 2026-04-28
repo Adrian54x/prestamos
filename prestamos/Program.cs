@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-bool menu = true, validarOpcion;
+bool menu = true, validarOpcion,val1;
 do
 {
     int opcion = Menu();
@@ -8,7 +8,7 @@ do
         switch (opcion)
         {
             case 0:
-                Console.WriteLine("Saliendo");
+                Console.Write("Saliendo");
                 Thread.Sleep(300);
                 Console.Write(".");
                 Thread.Sleep(300);
@@ -17,7 +17,17 @@ do
                 Console.Write(".");
                 menu = false;
                 break;
+
             case 1:
+            Console.Write("Codigo del Prestamo:");
+            int codigo = CodigoPrestamo();
+            string nombre = ValidacionDeTexto(3);
+            int carnet = Carnet();
+            string carrera = ValidacionDeTexto(5);
+            string equipoPrestado = ValidacionDeTexto(4);
+int cantidad;
+ bool estadoPrestamo;
+//Control c = new Control();
                 break;
             case 2: 
             case 3: 
@@ -31,13 +41,50 @@ do
 
 int CodigoPrestamo()
 {
+    int codigop;
     do
     {
-    } while ();
-    return;
+        val1 = int.TryParse(Console.ReadLine(), out codigop);
+        if(!val1)
+        {
+            Console.WriteLine("Codigo no valido!--->Intente otra ves");
+        }
+    } while (!val1);
+    return codigop;
 }
-string NombreEstudiante;
-int Carnet;
+string ValidacionDeTexto(int cantidadCaracter)
+{
+    string caracter;
+    do
+    {
+        caracter = Console.ReadLine();
+        if (caracter.Length >= cantidadCaracter)
+        {
+            val1 = true;
+        }
+        else
+        {
+            Console.WriteLine("ingreso no valido!--->Intente otra ves");
+            val1 = false;
+        }
+    } while (!val1);
+    return caracter;
+}
+
+int Carnet()
+{
+    int carnetE;
+    do
+    {
+        val1 = int.TryParse(Console.ReadLine(), out carnetE);
+        if(!val1 || carnetE.ToString().Length != 5)
+        {
+            Console.WriteLine("Carnet no valido");
+        }
+    }while (!val1 || carnetE.ToString().Length != 5);
+    return carnetE;
+}
+
 string Carrera;
 string EquipoPrestado;
 int Cantidad;
